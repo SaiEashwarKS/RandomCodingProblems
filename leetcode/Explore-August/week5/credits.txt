@@ -1,3 +1,0 @@
-I first tried using graph implemented as adjacency matrix and performed depth first search using stack. This worked for 74/100 test cases but exceeded time limit for the 75th case.
-
-I referred to Algorithms made easy - @khushbugupta 's video (https://www.youtube.com/watch?v=2mva2YRgrW8) on union-find and implemented the same in C.
