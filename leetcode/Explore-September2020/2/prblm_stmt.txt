@@ -1,18 +1,23 @@
-Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. 
-You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.
+Given an array of integers, find out whether there are two distinct indices i and j in the array such that the absolute difference between nums[i] and nums[j] is at most t and the absolute difference between i and j is at most k.
 
  
 
 Example 1:
-Input: "abab"
-Output: True
-Explanation: It's the substring "ab" twice.
+Input: nums = [1,2,3,1], k = 3, t = 0
+Output: true
 
 Example 2:
-Input: "aba"
-Output: False
+Input: nums = [1,0,1,1], k = 1, t = 2
+Output: true
 
 Example 3:
-Input: "abcabcabcabc"
-Output: True
-Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
+Input: nums = [1,5,9,1,5,9], k = 2, t = 3
+Output: false
+ 
+
+Constraints:
+
+0 <= nums.length <= 2 * 104
+-231 <= nums[i] <= 231 - 1
+0 <= k <= 104
+0 <= t <= 231 - 1
