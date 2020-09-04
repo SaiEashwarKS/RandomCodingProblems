@@ -1,28 +1,29 @@
-class Solution:
-    def repeatedSubstringPattern(self, s: str) -> bool:
-        l = list(s)
-        if(len(l) < 2):
+class Solution(object):
+    def containsNearbyAlmostDuplicate(self, nums, k, t):
+        """
+        :type nums: List[int]
+        :type k: int
+        :type t: int
+        :rtype: bool
+        """
+        if k < 0 or t < 0:
             return False
-        i = 2
         
-        while(len(l)//i > 0):
-            if(l[0:len(l)//i ] * i == l):
+        from sortedcontainers import SortedDict
+        
+        sd = SortedDict()
+        
+        for i, x in enumerate(nums):
+            if sd.bisect_right(x+t) - sd.bisect_left(x-t) > 0:
                 return True
-            i += 1
+            if not x in sd:
+                sd[x] = 0
+            sd[x] += 1
+            
+            if len(sd) > k:
+                y = nums[i-k]
+                sd[y] -= 1
+                if sd[y] == 0:
+                    del sd[y]
+                    
         return False
-
-   
-"""
-Saw a cleaner solution :
-Explanation:
-After looking at the top submission, I found these and thought I explain how they work:
-If there is a repition in s, it means s can be seen as a combination of (at least) two string t.
-s = t + t
-If we double s, we get "t + t + t + t = 4t". cutting away the first and last letter, we end with " u + t + t + u = u + s + u" with u being whatever is left (could be empty).
-But because s is at least 2t, 2s is 4t and taking away the first and last letter only "destroys" 2t, so the string still contains s.
-
-
-class Solution:
-    def repeatedSubstringPattern(self, s: str) -> bool:
-      return s in (s + s)[1: -1]
-"""
