@@ -41,20 +41,20 @@ public:
 	        while(j < k)
 	        {
 	            sum = arr[j] + arr[k];
-	        if(sum == arr[i])
-	        {
-	            ++count;
-	            ++j;
-	            --k;
-	        }
-	        else if(sum < arr[i])
-	        {
-	            ++j;
-	        }
-	        else
-	        {
-	            --k;
-	        }
+				if(sum == arr[i])
+				{
+					++count;
+					++j;
+					--k;
+				}
+				else if(sum < arr[i])
+				{
+					++j;
+				}
+				else
+				{
+					--k;
+				}
 	        }
 	        
 	    }
